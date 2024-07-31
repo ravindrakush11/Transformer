@@ -100,7 +100,7 @@ class Decoder(nn.Module):
 
 class DecoderLayer(nn.Module):
   def __init__(self, d_model, num_heads, d_ff, dropout=0.1):
-    super(DecoderLayer, self).__init()
+    super(DecoderLayer, self).__init__()
     self.self_attention = nn.MultiheadAttention(d_model, num_heads, dropout=dropout)
     self.encoder_attention = nn.MultiheadAttention(d_model, num_heads, dropout=dropout)
     self.feed_forward = nn.Sequential(
@@ -157,3 +157,8 @@ def test_transformer():
   print("Output Shape:", output.shape)
 
 test_transformer()
+
+# Output: 
+# Source Input Shape: torch.Size([2, 10])
+# Target Input Shape: torch.Size([2, 10])
+# Output Shape: torch.Size([2, 10, 10000])
